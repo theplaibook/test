@@ -1,100 +1,101 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionHeading } from "@/components/SectionHeading";
 
-const services = [
+const features = [
   {
-    title: "Exterior Detail",
+    title: "Instant Sign-Ups",
     description:
-      "Hand wash, clay bar, polish, and sealant. Your paint restored to showroom condition.",
-    price: "From $149",
+      "Bootyfull greets every visitor and walks them through sign-up in seconds. No forms, no friction — just a conversation that converts.",
+    price: "0 forms",
     icon: "01",
   },
   {
-    title: "Interior Detail",
+    title: "Lead Qualifying",
     description:
-      "Deep vacuum, steam clean, leather conditioning, and odor elimination. Like new inside.",
-    price: "From $129",
+      "She asks the right questions, sorts the hot leads from the tire-kickers, and hands your team only the people worth calling.",
+    price: "Filters noise",
     icon: "02",
   },
   {
-    title: "Full Detail",
+    title: "24/7 Reception",
     description:
-      "Complete interior and exterior treatment. The full Superior experience, inside and out.",
-    price: "From $249",
+      "Never sleeps, never takes lunch, never puts anyone on hold. Every lead at 3am gets the same warm welcome as the ones at noon.",
+    price: "Always on",
     icon: "03",
   },
   {
-    title: "Ceramic Coating",
+    title: "Speaks Everyone's Language",
     description:
-      "Professional-grade ceramic protection. Years of defense against Arizona's brutal sun.",
-    price: "From $599",
+      "English, Spanish, Portuguese — Bootyfull switches mid-sentence without missing a beat. Habla con todos los clientes.",
+    price: "3+ languages",
     icon: "04",
   },
   {
-    title: "Paint Correction",
+    title: "Books Appointments",
     description:
-      "Multi-stage compounding and polishing to remove swirls, scratches, and oxidation.",
-    price: "From $399",
+      "She checks your calendar, offers open slots, and locks in the meeting — all inside the chat, before the lead cools off.",
+    price: "Auto-schedule",
     icon: "05",
   },
   {
-    title: "Fleet Services",
+    title: "Syncs Your CRM",
     description:
-      "Volume pricing for dealerships, rental agencies, and corporate fleets. On-site service.",
-    price: "Custom",
+      "Every new customer lands in your system automatically — name, number, and the whole conversation. Nothing gets dropped.",
+    price: "Zero copy-paste",
     icon: "06",
   },
 ];
 
 const stats = [
-  { value: "5,000+", label: "Cars Detailed" },
-  { value: "156", label: "5-Star Reviews" },
-  { value: "8+", label: "Years Experience" },
-  { value: "100%", label: "Satisfaction Rate" },
+  { value: "2M+", label: "Chats Handled" },
+  { value: "12k", label: "Customers Signed Up" },
+  { value: "24/7", label: "Always Online" },
+  { value: "0", label: "Coffee Breaks" },
 ];
 
 const reviews = [
   {
-    name: "Marcus T.",
-    vehicle: "2024 BMW X5",
-    text: "Absolutely blown away. My X5 looks better than the day I drove it off the lot. The ceramic coating is flawless.",
+    name: "Mateo R.",
+    vehicle: "Founder, Loja Verde",
+    text: "We were losing leads overnight. Bootyfull signed up 40 customers while we slept the first week. My co-founder cried a little.",
     rating: 5,
   },
   {
-    name: "Jennifer R.",
-    vehicle: "2023 Mercedes GLE",
-    text: "They came to my office in Paradise Valley and detailed my car while I worked. Superior is the only detailer I trust with my Mercedes.",
+    name: "Valentina S.",
+    vehicle: "Owner, Studio Flora",
+    text: "She replies in Portuguese and Spanish faster than my whole front desk. Clients think she's a real person. Honestly, better.",
     rating: 5,
   },
   {
-    name: "David K.",
-    vehicle: "2022 Porsche 911",
-    text: "The paint correction was incredible. Swirl marks I thought were permanent are completely gone. These guys know what they're doing.",
+    name: "Diego M.",
+    vehicle: "Director, RapidFit Gyms",
+    text: "Set it up in an afternoon. Now every DM turns into a signed-up member. Bootyfull works harder than my sales team, no offense to them.",
     rating: 5,
   },
 ];
 
 const whyUs = [
   {
-    title: "We Come To You",
+    title: "She Never Sleeps",
     description:
-      "No drop-offs, no waiting rooms. We bring our full detail setup to your home, office, or wherever your vehicle is.",
+      "Your competitors close at 6pm. Bootyfull is still out there signing up the customer who finally had a free minute at midnight.",
   },
   {
-    title: "Premium Products Only",
+    title: "She's Never Awkward",
     description:
-      "We use exclusively professional-grade products — Gtechniq, Gyeon, and Chemical Guys. No shortcuts, no cheap substitutes.",
+      "No dead air, no fumbled pricing questions, no 'let me check with my manager.' Bootyfull knows your business cold and answers instantly.",
   },
   {
-    title: "Trained & Insured",
+    title: "She Sounds Human",
     description:
-      "Every technician is fully trained, background-checked, and insured. Your vehicle is in expert hands.",
+      "Warm, quick, a little charming. Customers relax and actually finish signing up — because it feels like a chat, not a form.",
   },
   {
-    title: "Arizona Specialists",
+    title: "Set Up in Minutes",
     description:
-      "We understand what the desert sun, dust, and heat do to paint and interiors. Our processes are built for this climate.",
+      "Tell Bootyfull what you sell and who you serve. Drop one line of code — or connect WhatsApp — and she's live. That's the whole setup.",
   },
 ];
 
@@ -103,41 +104,52 @@ export default function HomePage() {
     <>
       {/* ===== HERO ===== */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden noise-bg">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-charcoal to-black" />
+        {/* Background photo */}
+        <Image
+          src="/beach-hero.png"
+          alt="Friends laughing together on a sunny beach"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        {/* Darkening + brand tint overlay for text legibility */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-black/70 to-black/90" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60" />
+        <div className="absolute inset-0 bg-gold/10 mix-blend-overlay" />
 
         {/* Decorative stripes */}
         <div className="gold-stripe left-[15%] top-[-20%]" />
         <div className="gold-stripe left-[75%] top-[-40%]" />
         <div className="gold-stripe left-[45%] top-[-60%]" />
 
-        {/* Diagonal gold line bottom-left */}
+        {/* Diagonal accent line bottom-left */}
         <div className="absolute bottom-0 left-0 w-[300px] h-[1px] bg-gradient-to-r from-gold to-transparent origin-bottom-left -rotate-[30deg]" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
           {/* Eyebrow */}
           <p className="animate-fade-in-up stagger-1 text-xs uppercase tracking-[0.5em] text-gold/80 mb-8">
-            Scottsdale&apos;s Premier Mobile Detailing
+            The AI Chatbot Call Center
           </p>
 
           {/* Main title */}
           <h1 className="animate-fade-in-up stagger-2 font-display leading-[0.9]">
             <span className="block text-7xl sm:text-8xl md:text-[10rem] gold-shimmer">
-              SUPERIOR
+              BOOTYFULL
             </span>
-            <span className="block text-4xl sm:text-5xl md:text-7xl text-off-white mt-2">
-              MOBILE DETAILING
+            <span className="block text-3xl sm:text-4xl md:text-6xl text-off-white mt-2">
+              SIGNS UP YOUR CUSTOMERS
             </span>
           </h1>
 
-          {/* Gold divider */}
+          {/* Accent divider */}
           <div className="animate-expand mx-auto mt-8 mb-8 h-[1px] max-w-xs bg-gradient-to-r from-transparent via-gold to-transparent" />
 
           {/* Subtitle */}
           <p className="animate-fade-in-up stagger-3 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Premium car detailing that comes to you. Ceramic coating, paint
-            correction, and meticulous detailing — delivered to your door
-            anywhere in the Scottsdale area.
+            Meet Bootyfull — the always-on AI chatbot that greets, qualifies,
+            and signs up your customers 24/7. A whole call center in one
+            beautiful bot. No hold music. No missed leads.
           </p>
 
           {/* CTAs */}
@@ -146,13 +158,13 @@ export default function HomePage() {
               href="/book"
               className="bg-gold text-black px-10 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-gold-light transition-all hover:translate-y-[-2px]"
             >
-              Book Your Detail
+              Get Bootyfull
             </Link>
             <Link
               href="/services"
               className="border border-gold/40 text-gold px-10 py-4 text-sm font-semibold uppercase tracking-wider hover:border-gold hover:bg-gold/10 transition-all"
             >
-              View Services
+              See Plans
             </Link>
           </div>
 
@@ -171,7 +183,7 @@ export default function HomePage() {
               ))}
             </div>
             <span className="text-sm text-gray-400">
-              5.0 from 156+ reviews
+              5.0 from 156+ businesses
             </span>
           </div>
         </div>
@@ -198,33 +210,33 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== SERVICES ===== */}
+      {/* ===== FEATURES ===== */}
       <section className="bg-black py-24">
         <div className="max-w-7xl mx-auto px-6">
           <ScrollReveal>
             <SectionHeading
-              label="What We Do"
-              title="SUPERIOR SERVICES"
-              goldWord="SUPERIOR"
-              description="From a quick exterior refresh to multi-stage paint correction, every service is performed with meticulous attention to detail."
+              label="What She Does"
+              title="MEET BOOTYFULL"
+              goldWord="BOOTYFULL"
+              description="From the first hello to the signed-up customer, Bootyfull runs the whole conversation — so you never lose a lead to a missed message again."
             />
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
-            {services.map((service, i) => (
-              <ScrollReveal key={service.title} delay={i * 100}>
+            {features.map((feature, i) => (
+              <ScrollReveal key={feature.title} delay={i * 100}>
                 <div className="service-card p-8 h-full">
                   <span className="font-display text-5xl text-gold/20">
-                    {service.icon}
+                    {feature.icon}
                   </span>
                   <h3 className="font-display text-2xl text-off-white mt-4 mb-3">
-                    {service.title.toUpperCase()}
+                    {feature.title.toUpperCase()}
                   </h3>
                   <p className="text-sm text-gray-400 leading-relaxed mb-6">
-                    {service.description}
+                    {feature.description}
                   </p>
                   <p className="text-gold text-sm font-semibold uppercase tracking-wider">
-                    {service.price}
+                    {feature.price}
                   </p>
                 </div>
               </ScrollReveal>
@@ -236,13 +248,13 @@ export default function HomePage() {
               href="/services"
               className="inline-block border border-gold/40 text-gold px-10 py-4 text-sm font-semibold uppercase tracking-wider hover:border-gold hover:bg-gold/10 transition-all"
             >
-              View All Services & Pricing
+              See Plans & Pricing
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ===== WHY SUPERIOR ===== */}
+      {/* ===== WHY BOOTYFULL ===== */}
       <section className="relative bg-charcoal py-24 overflow-hidden noise-bg">
         <div className="gold-stripe left-[10%] top-[-30%]" />
         <div className="gold-stripe right-[20%] top-[-50%]" />
@@ -251,9 +263,9 @@ export default function HomePage() {
           <ScrollReveal>
             <SectionHeading
               label="The Difference"
-              title="WHY SUPERIOR?"
-              goldWord="SUPERIOR"
-              description="We're not just another mobile wash. We're detailing professionals who happen to come to you."
+              title="WHY BOOTYFULL?"
+              goldWord="BOOTYFULL"
+              description="She's not just another chat popup. She's a closer who happens to live in a chat window."
             />
           </ScrollReveal>
 
@@ -287,9 +299,9 @@ export default function HomePage() {
           <ScrollReveal>
             <SectionHeading
               label="Testimonials"
-              title="SUPERIOR RESULTS"
-              goldWord="SUPERIOR"
-              description="Don't take our word for it. Here's what our clients have to say."
+              title="BUSINESSES LOVE BOOTYFULL"
+              goldWord="BOOTYFULL"
+              description="Don't take our word for it. Here's what happened after they let her answer the chat."
             />
           </ScrollReveal>
 
@@ -326,33 +338,33 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== SERVICE AREAS ===== */}
+      {/* ===== CHANNELS ===== */}
       <section className="bg-charcoal py-24 border-t border-slate">
         <div className="max-w-7xl mx-auto px-6">
           <ScrollReveal>
             <SectionHeading
-              label="Coverage"
-              title="SERVING THE VALLEY"
-              description="We bring Superior detailing to your doorstep across the Phoenix metropolitan area."
+              label="Everywhere You Are"
+              title="ONE BOT, EVERY CHANNEL"
+              description="Bootyfull shows up wherever your customers already are — and signs them up right there."
             />
           </ScrollReveal>
 
           <div className="flex flex-wrap justify-center gap-4 mt-12">
             {[
-              "Scottsdale",
-              "Paradise Valley",
-              "Phoenix",
-              "Tempe",
-              "Mesa",
-              "Chandler",
-              "Gilbert",
-              "Fountain Hills",
-              "Cave Creek",
-              "Carefree",
-            ].map((area, i) => (
-              <ScrollReveal key={area} delay={i * 50}>
+              "Website",
+              "WhatsApp",
+              "Instagram",
+              "Messenger",
+              "SMS",
+              "Email",
+              "Slack",
+              "Telegram",
+              "Live Chat",
+              "TikTok DMs",
+            ].map((channel, i) => (
+              <ScrollReveal key={channel} delay={i * 50}>
                 <div className="border border-slate px-6 py-3 text-sm uppercase tracking-wider text-gray-400 hover:border-gold hover:text-gold transition-colors cursor-default">
-                  {area}
+                  {channel}
                 </div>
               </ScrollReveal>
             ))}

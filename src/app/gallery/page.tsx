@@ -1,127 +1,132 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "Gallery",
+  title: "Conversations",
   description:
-    "Before and after photos of Superior Mobile Detailing's work. See the results of our premium car detailing, ceramic coating, and paint correction services in Scottsdale, AZ.",
+    "Real-style conversations showing Bootyfull, the AI chatbot, greeting and signing up customers across gyms, salons, e-commerce, real estate, restaurants and more.",
 };
 
-const galleryItems = [
+type Msg = { from: "bot" | "user"; text: string };
+
+const conversations: {
+  category: string;
+  business: string;
+  outcome: string;
+  chat: Msg[];
+}[] = [
   {
-    category: "Ceramic Coating",
-    vehicle: "2024 Mercedes-AMG GT",
-    description: "Full paint correction + Gtechniq Crystal Serum Ultra ceramic coating. Mirror finish achieved after 12-hour process.",
-    image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=80",
-    tag: "AFTER",
+    category: "E-Commerce",
+    business: "Loja Verde",
+    outcome: "Signed up + first order",
+    chat: [
+      { from: "bot", text: "Oi! First time here? I've got a code that'll make this even better." },
+      { from: "user", text: "ooh yes please" },
+      { from: "bot", text: "Drop your email and it's yours — plus free shipping today." },
+      { from: "user", text: "cami@email.com" },
+      { from: "bot", text: "Done! Code applied. You're officially one of us." },
+    ],
   },
   {
-    category: "Full Detail",
-    vehicle: "2023 Porsche 911 Turbo S",
-    description: "Complete interior and exterior detail. Paint restored to factory gloss, leather conditioned and protected.",
-    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80",
-    tag: "AFTER",
+    category: "Fitness",
+    business: "RapidFit Gyms",
+    outcome: "New member enrolled",
+    chat: [
+      { from: "bot", text: "Looking to start training? I can get you a free trial pass right now." },
+      { from: "user", text: "how much after that?" },
+      { from: "bot", text: "$29/mo, no joining fee this week. Want me to lock it in?" },
+      { from: "user", text: "yeah do it" },
+      { from: "bot", text: "You're in! See you at the front desk, Diego." },
+    ],
   },
   {
-    category: "Paint Correction",
-    vehicle: "2024 BMW M4 Competition",
-    description: "Two-stage paint correction removing swirl marks and micro-scratches on Isle of Man Green metallic.",
-    image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80",
-    tag: "AFTER",
+    category: "Beauty",
+    business: "Studio Flora",
+    outcome: "Appointment booked",
+    chat: [
+      { from: "bot", text: "Hola! Want to book with us? I've got openings this week." },
+      { from: "user", text: "friday afternoon?" },
+      { from: "bot", text: "Friday 3pm is free with Ana. Shall I book it?" },
+      { from: "user", text: "perfect" },
+      { from: "bot", text: "Booked! Confirmation on its way. Nos vemos el viernes." },
+    ],
   },
   {
-    category: "Ceramic Coating",
-    vehicle: "2023 Lamborghini Huracan EVO",
-    description: "Full ceramic coating package with wheel coating and glass treatment. 5-year protection applied.",
-    image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80",
-    tag: "AFTER",
+    category: "Real Estate",
+    business: "Casa Nova Realty",
+    outcome: "Viewing scheduled",
+    chat: [
+      { from: "bot", text: "Hey! Interested in the downtown loft? I can set up a viewing." },
+      { from: "user", text: "is it still available?" },
+      { from: "bot", text: "It is! Saturday morning works — what's the best number to text you?" },
+      { from: "user", text: "555-0110" },
+      { from: "bot", text: "Got it. Viewing confirmed for Saturday 10am." },
+    ],
   },
   {
-    category: "Exterior Detail",
-    vehicle: "2024 Audi RS7",
-    description: "Hand wash, clay bar, single-stage polish and premium sealant. Nardo Gray never looked this good.",
-    image: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=80",
-    tag: "AFTER",
+    category: "Restaurant",
+    business: "El Rincón",
+    outcome: "Reservation + waitlist",
+    chat: [
+      { from: "bot", text: "Buenas! Table for tonight? We fill up fast on Fridays." },
+      { from: "user", text: "table for 4 at 8" },
+      { from: "bot", text: "8pm for 4 — done. Want to join our VIP list for early booking?" },
+      { from: "user", text: "sure" },
+      { from: "bot", text: "Added! See you at 8, table's under Mateo." },
+    ],
   },
   {
-    category: "Interior Detail",
-    vehicle: "2023 Range Rover Autobiography",
-    description: "Full leather deep clean, steam extraction, and UV protection treatment on semi-aniline leather.",
-    image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=800&q=80",
-    tag: "AFTER",
-  },
-  {
-    category: "Paint Correction",
-    vehicle: "2022 Ferrari F8 Tributo",
-    description: "Rosso Corsa paint corrected to remove dealership wash marks. Three-stage correction process.",
-    image: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=800&q=80",
-    tag: "AFTER",
-  },
-  {
-    category: "Full Detail",
-    vehicle: "2024 Mercedes-Benz S-Class",
-    description: "Complete showroom detail for client delivery. Interior and exterior brought to factory-new condition.",
-    image: "https://images.unsplash.com/photo-1563720223185-11003d516935?w=800&q=80",
-    tag: "AFTER",
-  },
-  {
-    category: "Ceramic Coating",
-    vehicle: "2023 Porsche Cayenne Turbo GT",
-    description: "Paint correction + ceramic coating. Protected against Arizona sun with Gtechniq Crystal Serum Light.",
-    image: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80",
-    tag: "AFTER",
-  },
-  {
-    category: "Exterior Detail",
-    vehicle: "2024 McLaren 720S",
-    description: "Full exterior detail with paint decontamination, hand polish, and ceramic spray sealant.",
-    image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=80",
-    tag: "AFTER",
-  },
-  {
-    category: "Full Detail",
-    vehicle: "2023 Bentley Continental GT",
-    description: "Complete detail including engine bay, trunk, and full interior leather treatment.",
-    image: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800&q=80",
-    tag: "AFTER",
-  },
-  {
-    category: "Paint Correction",
-    vehicle: "2024 Aston Martin DB12",
-    description: "Single-stage polish on Satin Titanium Grey. Removed light swirls from transport and dealer handling.",
-    image: "https://images.unsplash.com/photo-1616422285623-13ff0162193c?w=800&q=80",
-    tag: "AFTER",
+    category: "Agency",
+    business: "Bright Studio",
+    outcome: "Qualified lead booked",
+    chat: [
+      { from: "bot", text: "Hi! Tell me a bit about your project and I'll set up a call." },
+      { from: "user", text: "need a new website, small budget" },
+      { from: "bot", text: "Got it. Our starter builds fit that. Free intro call Thursday?" },
+      { from: "user", text: "works for me" },
+      { from: "bot", text: "Booked for Thursday 11am. The team's excited." },
+    ],
   },
 ];
 
 const categories = [
   "All",
-  "Ceramic Coating",
-  "Paint Correction",
-  "Full Detail",
-  "Interior Detail",
-  "Exterior Detail",
+  "E-Commerce",
+  "Fitness",
+  "Beauty",
+  "Real Estate",
+  "Restaurant",
 ];
 
 export default function GalleryPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-gradient-to-b from-charcoal to-black pt-32 pb-20 noise-bg overflow-hidden">
+      <section className="relative pt-32 pb-20 noise-bg overflow-hidden">
+        {/* Background photo */}
+        <Image
+          src="/restaurant.png"
+          alt="Friends laughing over dinner and drinks at a beachside restaurant"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/80 to-black" />
         <div className="gold-stripe right-[25%] top-[-20%]" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <p className="text-xs uppercase tracking-[0.5em] text-gold/80 mb-4 animate-fade-in-up stagger-1">
-            Our Work
+            She Never Misses
           </p>
           <h1 className="font-display text-6xl md:text-8xl text-off-white animate-fade-in-up stagger-2">
-            <span className="text-gold">SUPERIOR</span> RESULTS
+            <span className="text-gold">BOOTYFULL</span> AT WORK
           </h1>
           <div className="animate-expand mx-auto mt-6 h-[1px] max-w-xs bg-gradient-to-r from-transparent via-gold to-transparent" />
           <p className="text-gray-400 mt-6 max-w-xl mx-auto animate-fade-in-up stagger-3">
-            Real results on real vehicles. Every transformation shown here was
-            performed by our team right here in the Scottsdale area.
+            Real-style chats from real kinds of businesses. Every one of these
+            ended the same way — a new customer signed up, no human required.
           </p>
         </div>
       </section>
@@ -144,64 +149,54 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* Gallery Grid */}
+      {/* Conversations Grid */}
       <section className="bg-black py-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {galleryItems.map((item, i) => (
-              <ScrollReveal key={i} delay={i * 80}>
-                <div className="group relative overflow-hidden border border-slate hover:border-gold/30 transition-colors">
-                  {/* Image */}
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={item.image}
-                      alt={`${item.vehicle} - ${item.category} by Superior Mobile Detailing Scottsdale`}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-
-                    {/* Dark gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-
-                    {/* Tag */}
-                    <div className="absolute top-4 left-4 bg-gold text-black text-[9px] font-bold uppercase tracking-wider px-2 py-1">
-                      {item.tag}
+            {conversations.map((item, i) => (
+              <ScrollReveal key={item.business} delay={i * 80}>
+                <div className="group border border-slate hover:border-gold/30 transition-colors flex flex-col h-full">
+                  {/* Header */}
+                  <div className="flex items-center justify-between px-5 py-4 border-b border-slate bg-charcoal">
+                    <div>
+                      <p className="text-off-white text-sm font-semibold">
+                        {item.business}
+                      </p>
+                      <p className="text-xs text-gold mt-1">{item.category}</p>
                     </div>
-
-                    {/* Category tag */}
-                    <div className="absolute top-4 right-4 border border-white/20 bg-black/50 backdrop-blur-sm text-[9px] text-white uppercase tracking-wider px-2 py-1">
-                      {item.category}
-                    </div>
-
-                    {/* Hover overlay with description */}
-                    <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center p-8">
-                      <div className="text-center">
-                        <span className="text-xs uppercase tracking-[0.3em] text-gold block mb-3">
-                          {item.category}
-                        </span>
-                        <p className="font-display text-2xl text-off-white mb-3">
-                          {item.vehicle.toUpperCase()}
-                        </p>
-                        <p className="text-sm text-gray-400 leading-relaxed max-w-xs">
-                          {item.description}
-                        </p>
-                      </div>
-                    </div>
+                    <span className="text-[9px] text-cyan uppercase tracking-wider border border-cyan/30 px-2 py-1">
+                      Live
+                    </span>
                   </div>
 
-                  {/* Info bar */}
-                  <div className="p-5 bg-charcoal">
-                    <div className="flex justify-between items-center">
-                      <div>
-                        <p className="text-off-white text-sm font-semibold">
-                          {item.vehicle}
-                        </p>
-                        <p className="text-xs text-gold mt-1">
-                          {item.category}
-                        </p>
+                  {/* Chat */}
+                  <div className="flex-1 p-5 space-y-3 bg-black/40">
+                    {item.chat.map((m, j) => (
+                      <div
+                        key={j}
+                        className={`flex ${
+                          m.from === "bot" ? "justify-start" : "justify-end"
+                        }`}
+                      >
+                        <div
+                          className={`max-w-[82%] px-3.5 py-2 text-[13px] leading-relaxed ${
+                            m.from === "bot"
+                              ? "bg-gradient-to-br from-gold to-violet text-black font-medium"
+                              : "bg-slate text-off-white"
+                          }`}
+                        >
+                          {m.text}
+                        </div>
                       </div>
-                    </div>
+                    ))}
+                  </div>
+
+                  {/* Outcome */}
+                  <div className="px-5 py-3 border-t border-slate flex items-center gap-2">
+                    <span className="w-2 h-2 bg-cyan" />
+                    <span className="text-xs uppercase tracking-wider text-gray-400">
+                      {item.outcome}
+                    </span>
                   </div>
                 </div>
               </ScrollReveal>
@@ -215,16 +210,16 @@ export default function GalleryPage() {
         <div className="max-w-3xl mx-auto px-6 text-center">
           <ScrollReveal>
             <p className="text-xs uppercase tracking-[0.3em] text-gold mb-4">
-              Your Vehicle Could Be Next
+              Your Business Could Be Next
             </p>
             <h2 className="font-display text-4xl md:text-5xl text-off-white mb-6">
-              READY FOR <span className="text-gold">SUPERIOR</span> RESULTS?
+              WANT CHATS LIKE <span className="text-gold">THESE?</span>
             </h2>
             <Link
               href="/book"
               className="inline-block bg-gold text-black px-10 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors"
             >
-              Book Your Detail
+              Get Bootyfull
             </Link>
           </ScrollReveal>
         </div>

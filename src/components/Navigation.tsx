@@ -5,10 +5,10 @@ import Link from "next/link";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/gallery", label: "Gallery" },
+  { href: "/services", label: "Plans" },
+  { href: "/gallery", label: "Conversations" },
   { href: "/about", label: "About" },
-  { href: "/book", label: "Book Now" },
+  { href: "/book", label: "Get Bootyfull" },
 ];
 
 export function Navigation() {
@@ -34,17 +34,17 @@ export function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
             <span className="font-display text-3xl tracking-wider text-gold group-hover:text-gold-light transition-colors">
-              SUPERIOR
+              BOOTYFULL
             </span>
             <span className="hidden sm:block text-[10px] uppercase tracking-[0.3em] text-gray-400 leading-tight">
-              Mobile<br />Detailing
+              AI Chatbot<br />Call Center
             </span>
           </Link>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) =>
-              link.label === "Book Now" ? (
+              link.label === "Get Bootyfull" ? (
                 <Link
                   key={link.href}
                   href={link.href}
@@ -102,7 +102,7 @@ export function Navigation() {
             href={link.href}
             onClick={() => setMobileOpen(false)}
             className={`font-display text-4xl tracking-wider transition-all duration-300 ${
-              link.label === "Book Now"
+              link.label === "Get Bootyfull"
                 ? "text-gold"
                 : "text-off-white hover:text-gold"
             }`}

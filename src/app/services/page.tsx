@@ -4,126 +4,75 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionHeading } from "@/components/SectionHeading";
 
 export const metadata: Metadata = {
-  title: "Services & Pricing",
+  title: "Plans & Pricing",
   description:
-    "Premium car detailing services in Scottsdale, AZ. Exterior detail, interior detail, ceramic coating, paint correction, and fleet services. View packages and pricing.",
+    "Bootyfull plans start at $99/mo. Pick Starter, Growth, or Unlimited and let the AI chatbot greet, qualify, and sign up your customers 24/7 across every channel.",
 };
 
 const packages = [
   {
-    id: "exterior",
-    name: "Exterior Detail",
-    tagline: "Showroom shine, every time",
-    price: 149,
-    duration: "2-3 hours",
+    id: "starter",
+    name: "Starter",
+    tagline: "Get her live on your site",
+    price: 99,
+    duration: "per month",
     features: [
-      "Hand wash with pH-neutral soap",
-      "Iron decontamination",
-      "Clay bar treatment",
-      "One-step machine polish",
-      "Carnauba wax or spray sealant",
-      "Tire & wheel deep clean",
-      "Trim restoration",
-      "Glass cleaning & water repellent",
+      "Bootyfull on your website",
+      "Up to 500 chats / month",
+      "Instant customer sign-ups",
+      "Lead capture (name + number)",
+      "English + Spanish",
+      "Email lead summaries",
+      "One-line install",
+      "Cancel anytime",
     ],
   },
   {
-    id: "interior",
-    name: "Interior Detail",
-    tagline: "Breathe new life inside",
-    price: 129,
-    duration: "2-3 hours",
-    features: [
-      "Full vacuum (seats, carpet, trunk)",
-      "Steam cleaning all surfaces",
-      "Leather cleaning & conditioning",
-      "Dashboard & console deep clean",
-      "Door jamb cleaning",
-      "Air vent detailing",
-      "Odor elimination treatment",
-      "Interior glass cleaning",
-    ],
-  },
-  {
-    id: "full",
-    name: "Full Detail",
-    tagline: "The complete Superior experience",
+    id: "growth",
+    name: "Growth",
+    tagline: "The one most businesses pick",
     price: 249,
-    duration: "4-5 hours",
+    duration: "per month",
     popular: true,
     features: [
-      "Everything in Exterior Detail",
-      "Everything in Interior Detail",
-      "Engine bay cleaning",
-      "Headlight restoration",
-      "Paint sealant upgrade",
-      "Leather UV protection",
-      "Trunk detail",
-      "Final inspection walkthrough",
+      "Everything in Starter",
+      "Up to 5,000 chats / month",
+      "WhatsApp, Instagram & Messenger",
+      "English, Spanish & Portuguese",
+      "Calendar booking inside chat",
+      "Lead qualifying & routing",
+      "CRM sync (any major CRM)",
+      "Custom personality & tone",
     ],
   },
   {
-    id: "ceramic",
-    name: "Ceramic Coating",
-    tagline: "Years of protection in one session",
+    id: "unlimited",
+    name: "Unlimited",
+    tagline: "Let her run the whole front desk",
     price: 599,
-    duration: "Full day",
+    duration: "per month",
     features: [
-      "Multi-stage paint correction",
-      "Surface decontamination",
-      "IPA wipe-down",
-      "Professional ceramic coating application",
-      "9H hardness rated",
-      "2-5 year protection",
-      "Hydrophobic finish",
-      "Complimentary maintenance wash",
-    ],
-  },
-  {
-    id: "paint",
-    name: "Paint Correction",
-    tagline: "Restore what the sun took",
-    price: 399,
-    duration: "6-8 hours",
-    features: [
-      "Paint depth measurement",
-      "Multi-stage compound & polish",
-      "Swirl mark removal",
-      "Scratch reduction",
-      "Oxidation removal",
-      "Panel-by-panel correction",
-      "Final sealant application",
-      "Before & after documentation",
-    ],
-  },
-  {
-    id: "fleet",
-    name: "Fleet Services",
-    tagline: "Volume pricing, Superior quality",
-    price: null,
-    duration: "Varies",
-    features: [
-      "Custom packages per vehicle type",
-      "On-site service at your location",
-      "Scheduled recurring service",
-      "Volume discounts available",
-      "Dedicated account manager",
-      "Priority scheduling",
-      "Monthly billing options",
-      "Dealership & rental agency rates",
+      "Everything in Growth",
+      "Unlimited chats",
+      "Every channel, every language",
+      "Payments & deposits in chat",
+      "A/B tested sign-up scripts",
+      "Team handoff to a human",
+      "Priority support (from humans)",
+      "Dedicated success manager",
     ],
   },
 ];
 
 const addOns = [
-  { name: "Headlight Restoration", price: 79 },
-  { name: "Engine Bay Detail", price: 69 },
-  { name: "Pet Hair Removal", price: 49 },
-  { name: "Odor Elimination (Ozone)", price: 89 },
-  { name: "Wheel Ceramic Coating", price: 149 },
-  { name: "Windshield Ceramic Coating", price: 79 },
-  { name: "Trim Ceramic Coating", price: 99 },
-  { name: "Scratch Touch-Up", price: 59 },
+  { name: "Extra Language Pack", price: 29 },
+  { name: "Voice Calls (she talks too)", price: 89 },
+  { name: "Custom Avatar & Name", price: 49 },
+  { name: "WhatsApp Business Setup", price: 69 },
+  { name: "CRM Integration Build", price: 99 },
+  { name: "Payments in Chat", price: 79 },
+  { name: "Analytics Dashboard", price: 39 },
+  { name: "White-Label (your brand)", price: 149 },
 ];
 
 export default function ServicesPage() {
@@ -134,16 +83,16 @@ export default function ServicesPage() {
         <div className="gold-stripe left-[20%] top-[-30%]" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <p className="text-xs uppercase tracking-[0.5em] text-gold/80 mb-4 animate-fade-in-up stagger-1">
-            Our Services
+            Simple Pricing
           </p>
           <h1 className="font-display text-6xl md:text-8xl text-off-white animate-fade-in-up stagger-2">
-            <span className="text-gold">SUPERIOR</span> PACKAGES
+            <span className="text-gold">BOOTYFULL</span> PLANS
           </h1>
           <div className="animate-expand mx-auto mt-6 h-[1px] max-w-xs bg-gradient-to-r from-transparent via-gold to-transparent" />
           <p className="text-gray-400 mt-6 max-w-xl mx-auto animate-fade-in-up stagger-3">
-            Every package includes our mobile service — we come to you anywhere
-            in the Scottsdale and Phoenix area. Prices shown are for
-            sedans; SUVs and trucks may vary.
+            One flat monthly price — no per-lead fees, no per-seat nonsense.
+            Bootyfull signs up as many customers as she can and never asks for
+            a raise. Cancel anytime.
           </p>
         </div>
       </section>
@@ -151,7 +100,7 @@ export default function ServicesPage() {
       {/* Packages */}
       <section className="bg-black py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {packages.map((pkg, i) => (
               <ScrollReveal key={pkg.id} delay={i * 100}>
                 <div
@@ -172,23 +121,14 @@ export default function ServicesPage() {
                     {pkg.name.toUpperCase()}
                   </h3>
                   <div className="mb-6">
-                    {pkg.price ? (
-                      <div className="flex items-baseline gap-2">
-                        <span className="font-display text-5xl text-gold">
-                          ${pkg.price}
-                        </span>
-                        <span className="text-xs text-gray-500 uppercase">
-                          starting
-                        </span>
-                      </div>
-                    ) : (
-                      <span className="font-display text-3xl text-gold">
-                        CUSTOM QUOTE
+                    <div className="flex items-baseline gap-2">
+                      <span className="font-display text-5xl text-gold">
+                        ${pkg.price}
                       </span>
-                    )}
-                    <p className="text-xs text-gray-500 mt-1">
-                      {pkg.duration}
-                    </p>
+                      <span className="text-xs text-gray-500 uppercase">
+                        {pkg.duration}
+                      </span>
+                    </div>
                   </div>
                   <ul className="space-y-3 flex-1">
                     {pkg.features.map((feature) => (
@@ -209,7 +149,7 @@ export default function ServicesPage() {
                         : "border border-gold/40 text-gold hover:bg-gold hover:text-black"
                     }`}
                   >
-                    {pkg.price ? "Book Now" : "Get A Quote"}
+                    Get {pkg.name}
                   </Link>
                 </div>
               </ScrollReveal>
@@ -224,8 +164,8 @@ export default function ServicesPage() {
           <ScrollReveal>
             <SectionHeading
               label="Extras"
-              title="ADD-ON SERVICES"
-              description="Enhance any package with these additional services."
+              title="POWER-UPS"
+              description="Bolt these onto any plan and give Bootyfull a few more tricks."
             />
           </ScrollReveal>
 
@@ -237,7 +177,7 @@ export default function ServicesPage() {
                     {addon.name}
                   </span>
                   <span className="font-display text-xl text-gold">
-                    ${addon.price}
+                    ${addon.price}/mo
                   </span>
                 </div>
               </ScrollReveal>
@@ -246,32 +186,38 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Size Pricing Note */}
+      {/* Guarantee */}
       <section className="bg-black py-16 border-t border-slate">
         <div className="max-w-3xl mx-auto px-6">
           <ScrollReveal>
             <div className="border border-gold/20 p-8">
               <h3 className="font-display text-2xl text-gold mb-4">
-                VEHICLE SIZE PRICING
+                THE BOOTYFULL PROMISE
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
                 <div>
                   <p className="text-off-white font-semibold mb-1">
-                    Sedans & Coupes
+                    Live in a Day
                   </p>
-                  <p className="text-gray-400">Base pricing as shown</p>
+                  <p className="text-gray-400">
+                    She&apos;s answering chats before your coffee&apos;s cold.
+                  </p>
                 </div>
                 <div>
                   <p className="text-off-white font-semibold mb-1">
-                    SUVs & Crossovers
+                    No Contracts
                   </p>
-                  <p className="text-gray-400">+$30 - $50 per service</p>
+                  <p className="text-gray-400">
+                    Month to month. Leave whenever, no hard feelings.
+                  </p>
                 </div>
                 <div>
                   <p className="text-off-white font-semibold mb-1">
-                    Trucks & Large SUVs
+                    14-Day Free Trial
                   </p>
-                  <p className="text-gray-400">+$50 - $75 per service</p>
+                  <p className="text-gray-400">
+                    Watch her sign up customers before you pay a cent.
+                  </p>
                 </div>
               </div>
             </div>
