@@ -2,43 +2,64 @@
 
 import { useState, useEffect, useRef } from "react";
 
-/* ── Plans ── */
-const plans = [
+/* ── Service data ── */
+const services = [
   {
-    id: "starter",
-    name: "Starter",
-    price: 99,
-    duration: "per month",
-    desc: "Bootyfull on your website, up to 500 chats",
+    id: "exterior",
+    name: "Exterior Detail",
+    price: 149,
+    duration: "2-3 hrs",
+    desc: "Hand wash, clay bar, polish & sealant",
   },
   {
-    id: "growth",
-    name: "Growth",
+    id: "interior",
+    name: "Interior Detail",
+    price: 129,
+    duration: "2-3 hrs",
+    desc: "Steam clean, leather conditioning, odor removal",
+  },
+  {
+    id: "full",
+    name: "Full Detail",
     price: 249,
-    duration: "per month",
-    desc: "Every channel, 3 languages, calendar booking",
+    duration: "4-5 hrs",
+    desc: "Complete interior + exterior treatment",
     popular: true,
   },
   {
-    id: "unlimited",
-    name: "Unlimited",
+    id: "ceramic",
+    name: "Ceramic Coating",
     price: 599,
-    duration: "per month",
-    desc: "Unlimited chats, payments, human handoff",
+    duration: "Full day",
+    desc: "Paint correction + professional ceramic protection",
+  },
+  {
+    id: "paint",
+    name: "Paint Correction",
+    price: 399,
+    duration: "6-8 hrs",
+    desc: "Multi-stage compound & polish, swirl removal",
+  },
+  {
+    id: "fleet",
+    name: "Fleet Services",
+    price: null,
+    duration: "Varies",
+    desc: "Volume pricing for dealerships & corporate fleets",
   },
 ];
 
-const businessTypes = [
-  "E-Commerce",
-  "Agency",
-  "Gym / Fitness",
-  "Salon / Beauty",
-  "Restaurant",
-  "Real Estate",
-  "Something Else",
+const vehicleSizes = [
+  { label: "Sedan / Coupe", extra: 0 },
+  { label: "SUV / Crossover", extra: 40 },
+  { label: "Truck", extra: 60 },
+  { label: "Large SUV / Van", extra: 75 },
+  { label: "Exotic / Specialty", extra: 0 },
 ];
 
 const timeSlots = [
+  "7:00 AM",
+  "8:00 AM",
   "9:00 AM",
   "10:00 AM",
   "11:00 AM",
@@ -47,8 +68,6 @@ const timeSlots = [
   "2:00 PM",
   "3:00 PM",
   "4:00 PM",
-  "5:00 PM",
-  "6:00 PM",
 ];
 
 /* ── Calendar helpers ── */
@@ -80,8 +99,8 @@ function useScrollInto(dep: string | boolean) {
 
 export default function BookPage() {
   // Selections
-  const [selectedPlan, setSelectedPlan] = useState("");
-  const [selectedType, setSelectedType] = useState("");
+  const [selectedService, setSelectedService] = useState("");
+  const [selectedSize, setSelectedSize] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const [name, setName] = useState("");
@@ -93,11 +112,14 @@ export default function BookPage() {
   const [calYear, setCalYear] = useState(today.getFullYear());
   const [calMonth, setCalMonth] = useState(today.getMonth());
 
-  const plan = plans.find((p) => p.id === selectedPlan);
+  const service = services.find((s) => s.id === selectedService);
+  const size = vehicleSizes.find((v) => v.label === selectedSize);
+  const totalPrice =
+    service?.price && size ? service.price + size.extra : service?.price;
 
   // Scroll refs
-  const typeRef = useScrollInto(selectedPlan);
-  const dateRef = useScrollInto(selectedType);
+  const sizeRef = useScrollInto(selectedService);
+  const dateRef = useScrollInto(selectedSize);
   const timeRef = useScrollInto(selectedDate);
   const contactRef = useScrollInto(selectedTime);
 
@@ -135,8 +157,8 @@ export default function BookPage() {
   }
 
   function reset() {
-    setSelectedPlan("");
-    setSelectedType("");
+    setSelectedService("");
+    setSelectedSize("");
     setSelectedDate("");
     setSelectedTime("");
     setName("");
@@ -153,10 +175,10 @@ export default function BookPage() {
         <div className="gold-stripe left-[40%] top-[-30%]" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <p className="text-xs uppercase tracking-[0.5em] text-gold/80 mb-4 animate-fade-in-up stagger-1">
-            Start Your Free Trial
+            Schedule Your Detail
           </p>
           <h1 className="font-display text-6xl md:text-8xl text-off-white animate-fade-in-up stagger-2">
-            GET <span className="text-gold">BOOTYFULL</span>
+            BOOK <span className="text-gold">SUPERIOR</span>
           </h1>
           <div className="animate-expand mx-auto mt-6 h-[1px] max-w-xs bg-gradient-to-r from-transparent via-gold to-transparent" />
         </div>
@@ -168,81 +190,80 @@ export default function BookPage() {
             /* ── Confirmation ── */
             <div className="text-center py-12 animate-fade-in-up">
               <div className="border border-gold p-12 max-w-lg mx-auto">
-                <span className="font-display text-6xl gold-shimmer block mb-4">
-                  YOU&apos;RE IN
+                <span className="font-display text-6xl text-gold block mb-4">
+                  BOOKED
                 </span>
                 <p className="text-off-white text-lg mb-2">
-                  Nice work{name ? `, ${name.split(" ")[0]}` : ""}. Bootyfull
-                  can&apos;t wait to meet you.
+                  You&apos;re all set{name ? `, ${name.split(" ")[0]}` : ""}.
                 </p>
                 <div className="border-t border-slate mt-6 pt-6 space-y-2 text-sm text-gray-400">
                   <p>
-                    <span className="text-off-white">{plan?.name} plan</span>
-                    {plan && ` -- $${plan.price}/mo`}
+                    <span className="text-off-white">{service?.name}</span>
+                    {totalPrice && ` -- $${totalPrice}`}
                   </p>
-                  <p>Demo: {formatSelectedDate()} at {selectedTime}</p>
+                  <p>{formatSelectedDate()} at {selectedTime}</p>
                 </div>
                 <p className="text-gray-500 text-xs mt-6">
-                  We&apos;ll text {phone} to confirm — or honestly, Bootyfull
-                  probably already has.
+                  We&apos;ll text you at {phone} within 2 hours to confirm.
                 </p>
                 <button
                   onClick={reset}
                   className="mt-8 border border-gold/40 text-gold px-8 py-3 text-sm uppercase tracking-wider hover:bg-gold hover:text-black transition-all"
                 >
-                  Start Over
+                  Book Another
                 </button>
               </div>
             </div>
           ) : (
             <div className="space-y-0">
-              {/* ── Q1: Pick a plan ── */}
+              {/* ── Q1: What do you need? ── */}
               <div className="pb-12">
                 <h2 className="font-display text-3xl text-off-white mb-2">
-                  PICK YOUR PLAN
+                  WHAT DO YOU NEED?
                 </h2>
                 <p className="text-sm text-gray-500 mb-6">
-                  Every plan starts with a 14-day free trial. No card to start.
+                  Tap to select a service.
                 </p>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  {plans.map((p) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {services.map((s) => (
                     <button
-                      key={p.id}
+                      key={s.id}
                       type="button"
                       onClick={() => {
-                        setSelectedPlan(p.id);
-                        if (p.id !== selectedPlan) {
-                          setSelectedType("");
+                        setSelectedService(s.id);
+                        // Reset downstream if changing service
+                        if (s.id !== selectedService) {
+                          setSelectedSize("");
                           setSelectedDate("");
                           setSelectedTime("");
                         }
                       }}
                       className={`relative p-6 border text-left transition-all ${
-                        selectedPlan === p.id
+                        selectedService === s.id
                           ? "border-gold bg-gold/10"
                           : "border-slate hover:border-gold/40"
                       }`}
                     >
-                      {p.popular && (
+                      {s.popular && (
                         <div className="absolute top-0 right-0 bg-gold text-black text-[9px] font-bold uppercase tracking-wider px-2 py-0.5">
                           Popular
                         </div>
                       )}
-                      {selectedPlan === p.id && (
+                      {selectedService === s.id && (
                         <div className="absolute top-0 left-0 w-full h-[2px] bg-gold" />
                       )}
                       <p className="font-display text-xl text-off-white">
-                        {p.name.toUpperCase()}
+                        {s.name.toUpperCase()}
                       </p>
                       <p className="text-xs text-gray-500 mt-1 mb-3">
-                        {p.desc}
+                        {s.desc}
                       </p>
                       <div className="flex items-baseline justify-between">
                         <span className="font-display text-2xl text-gold">
-                          ${p.price}
+                          {s.price ? `$${s.price}` : "CUSTOM"}
                         </span>
                         <span className="text-[10px] text-gray-600 uppercase">
-                          {p.duration}
+                          {s.duration}
                         </span>
                       </div>
                     </button>
@@ -250,54 +271,59 @@ export default function BookPage() {
                 </div>
               </div>
 
-              {/* ── Q2: Business type ── */}
-              {selectedPlan && (
+              {/* ── Q2: Vehicle size (appears after service selected) ── */}
+              {selectedService && (
                 <div
-                  ref={typeRef}
+                  ref={sizeRef}
                   className="py-12 border-t border-slate animate-fade-in-up"
                 >
                   <h2 className="font-display text-3xl text-off-white mb-2">
-                    WHAT&apos;S YOUR BUSINESS?
+                    WHAT ARE YOU DRIVING?
                   </h2>
                   <p className="text-sm text-gray-500 mb-6">
-                    So Bootyfull knows how to talk to your customers.
+                    Pricing adjusts based on vehicle size.
                   </p>
                   <div className="flex flex-wrap gap-3">
-                    {businessTypes.map((t) => (
+                    {vehicleSizes.map((v) => (
                       <button
-                        key={t}
+                        key={v.label}
                         type="button"
                         onClick={() => {
-                          setSelectedType(t);
-                          if (t !== selectedType) {
+                          setSelectedSize(v.label);
+                          if (v.label !== selectedSize) {
                             setSelectedDate("");
                             setSelectedTime("");
                           }
                         }}
                         className={`px-6 py-4 border text-sm transition-all ${
-                          selectedType === t
+                          selectedSize === v.label
                             ? "border-gold bg-gold/10 text-gold"
                             : "border-slate text-gray-400 hover:border-gold/40"
                         }`}
                       >
-                        {t}
+                        {v.label}
+                        {v.extra > 0 && (
+                          <span className="text-xs text-gray-600 ml-2">
+                            +${v.extra}
+                          </span>
+                        )}
                       </button>
                     ))}
                   </div>
                 </div>
               )}
 
-              {/* ── Q3: Pick a date ── */}
-              {selectedType && (
+              {/* ── Q3: Pick a date (appears after size selected) ── */}
+              {selectedSize && (
                 <div
                   ref={dateRef}
                   className="py-12 border-t border-slate animate-fade-in-up"
                 >
                   <h2 className="font-display text-3xl text-off-white mb-2">
-                    BOOK YOUR SETUP CALL
+                    PICK A DATE
                   </h2>
                   <p className="text-sm text-gray-500 mb-6">
-                    Pick a day. We&apos;ll have Bootyfull live before it ends.
+                    Sundays are by appointment only.
                   </p>
 
                   <div className="border border-slate p-6 max-w-md">
@@ -376,7 +402,7 @@ export default function BookPage() {
                 </div>
               )}
 
-              {/* ── Q4: Pick a time ── */}
+              {/* ── Q4: Pick a time (appears after date selected) ── */}
               {selectedDate && (
                 <div
                   ref={timeRef}
@@ -407,7 +433,7 @@ export default function BookPage() {
                 </div>
               )}
 
-              {/* ── Q5: Name & phone ── */}
+              {/* ── Q5: Name & phone (appears after time selected) ── */}
               {selectedTime && (
                 <div
                   ref={contactRef}
@@ -417,7 +443,7 @@ export default function BookPage() {
                     LAST STEP
                   </h2>
                   <p className="text-sm text-gray-500 mb-6">
-                    Just your name and number — Bootyfull takes it from here.
+                    Just your name and number so we can confirm.
                   </p>
 
                   <div className="max-w-md">
@@ -430,7 +456,7 @@ export default function BookPage() {
                           type="text"
                           value={name}
                           onChange={(e) => setName(e.target.value)}
-                          placeholder="Camila Rodríguez"
+                          placeholder="John Smith"
                           autoFocus
                         />
                       </div>
@@ -442,7 +468,7 @@ export default function BookPage() {
                           type="tel"
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
-                          placeholder="(555) 555-0142"
+                          placeholder="(480) 555-0000"
                         />
                       </div>
                     </div>
@@ -450,19 +476,19 @@ export default function BookPage() {
                     {/* Summary */}
                     <div className="border border-gold/20 bg-gold/5 p-6 mb-8">
                       <p className="text-xs uppercase tracking-wider text-gold mb-3">
-                        Your Setup
+                        Booking Summary
                       </p>
                       <div className="space-y-1 text-sm">
                         <div className="flex justify-between">
-                          <span className="text-gray-400">Plan</span>
-                          <span className="text-off-white">{plan?.name}</span>
+                          <span className="text-gray-400">Service</span>
+                          <span className="text-off-white">{service?.name}</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-400">Business</span>
-                          <span className="text-off-white">{selectedType}</span>
+                          <span className="text-gray-400">Vehicle</span>
+                          <span className="text-off-white">{selectedSize}</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-400">Setup call</span>
+                          <span className="text-gray-400">Date</span>
                           <span className="text-off-white">{formatSelectedDate()}</span>
                         </div>
                         <div className="flex justify-between">
@@ -470,9 +496,9 @@ export default function BookPage() {
                           <span className="text-off-white">{selectedTime}</span>
                         </div>
                         <div className="flex justify-between border-t border-slate pt-2 mt-2">
-                          <span className="text-gold font-semibold">After trial</span>
+                          <span className="text-gold font-semibold">Total</span>
                           <span className="font-display text-2xl text-gold">
-                            {plan ? `$${plan.price}/mo` : "--"}
+                            {totalPrice ? `$${totalPrice}` : "TBD"}
                           </span>
                         </div>
                       </div>
@@ -487,10 +513,10 @@ export default function BookPage() {
                           : "bg-slate text-gray-600 cursor-not-allowed"
                       }`}
                     >
-                      Start Free Trial
+                      Confirm Booking
                     </button>
                     <p className="text-[10px] text-gray-600 text-center mt-3">
-                      14 days free. No card required to start. Cancel anytime.
+                      No payment required now. Pay after service is complete.
                     </p>
                   </div>
                 </div>

@@ -1,68 +1,67 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionHeading } from "@/components/SectionHeading";
 
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "The story behind Bootyfull — the AI chatbot call center built to sign up customers 24/7. Why we built a bot that never sleeps, never fumbles, and speaks everyone's language.",
+    "Learn about Superior Mobile Detailing — Scottsdale's trusted mobile car detailing professionals. 8+ years of experience, 5,000+ vehicles detailed, 100% satisfaction guaranteed.",
 };
 
 const values = [
   {
-    title: "Warmth",
+    title: "Precision",
     description:
-      "A sign-up should feel like a chat with a friend, not a form at the DMV. Bootyfull is built to be the friendliest first impression your business has.",
+      "Every panel, every seam, every surface gets individual attention. We don't cut corners — we detail them.",
   },
   {
-    title: "Speed",
+    title: "Integrity",
     description:
-      "A lead cools off in minutes. Bootyfull replies in milliseconds — day or night — so nobody waits and nobody wanders off to a competitor.",
+      "Honest pricing, realistic expectations, and transparent communication. We tell you what your vehicle needs, not what pads our bill.",
   },
   {
-    title: "Honesty",
+    title: "Excellence",
     description:
-      "She quotes real prices, answers real questions, and never oversells. A customer she signs up is a customer who actually wanted to.",
+      "We use the best products, the best techniques, and hold ourselves to the highest standard on every single vehicle.",
   },
   {
-    title: "Fun",
+    title: "Convenience",
     description:
-      "Business software is boring. Bootyfull isn't. She's charming, a little cheeky, and somehow that gets more people across the line.",
+      "Your time is valuable. We built our entire business around coming to you, so you never have to rearrange your day.",
   },
 ];
 
 const timeline = [
   {
-    year: "Idea",
-    title: "The 3AM Lead",
+    year: "2016",
+    title: "The Beginning",
     description:
-      "A friend lost a customer because nobody answered a midnight message. We thought: what if someone always did?",
+      "Started with a pressure washer, a bucket of supplies, and a commitment to doing detail work the right way.",
   },
   {
-    year: "Day 1",
-    title: "Bootyfull Is Born",
+    year: "2018",
+    title: "Going Mobile",
     description:
-      "We named the bot Bootyfull because it made us laugh — and because customers remember a name that makes them smile.",
+      "Invested in a fully equipped mobile rig to bring professional-grade detailing directly to clients across Scottsdale.",
   },
   {
-    year: "Beta",
-    title: "First Sign-Up",
+    year: "2020",
+    title: "Ceramic Certification",
     description:
-      "At 2:47am, Bootyfull greeted a stranger, answered three questions, and signed them up. Nobody was awake. It just worked.",
+      "Became certified installers for Gtechniq and Gyeon ceramic coatings, expanding our protection services.",
   },
   {
-    year: "Launch",
-    title: "She Learned to Travel",
+    year: "2022",
+    title: "Fleet Contracts",
     description:
-      "WhatsApp, Instagram, SMS. Bootyfull went wherever customers already were — and started signing them up right there.",
+      "Partnered with luxury dealerships and rental agencies across the Valley for recurring fleet maintenance.",
   },
   {
-    year: "Now",
-    title: "Habla Con Todos",
+    year: "2024",
+    title: "5,000 Vehicles",
     description:
-      "English, Spanish, Portuguese, and counting. Bootyfull signs up customers on three continents while their owners sleep.",
+      "Reached the milestone of 5,000 vehicles detailed with a perfect 5-star rating across all platforms.",
   },
 ];
 
@@ -77,7 +76,7 @@ export default function AboutPage() {
             Our Story
           </p>
           <h1 className="font-display text-6xl md:text-8xl text-off-white animate-fade-in-up stagger-2">
-            THE BOT THAT NEVER <span className="text-gold">SLEEPS</span>
+            BUILT ON <span className="text-gold">SUPERIOR</span> STANDARDS
           </h1>
           <div className="animate-expand mx-auto mt-6 h-[1px] max-w-xs bg-gradient-to-r from-transparent via-gold to-transparent" />
         </div>
@@ -93,41 +92,40 @@ export default function AboutPage() {
                   Who We Are
                 </p>
                 <h2 className="font-display text-4xl text-off-white mb-6">
-                  A SIGN-UP SHOULDN&apos;T FEEL<br />
-                  <span className="text-gold">LIKE PAPERWORK.</span>
+                  DETAILING ISN&apos;T A JOB.<br />
+                  <span className="text-gold">IT&apos;S A CRAFT.</span>
                 </h2>
                 <div className="space-y-4 text-sm text-gray-400 leading-relaxed">
                   <p>
-                    Bootyfull started with a simple, slightly ridiculous idea:
-                    what if the friendliest, fastest salesperson at your business
-                    was a chatbot with a name that made people smile?
+                    Superior Mobile Detailing was founded on a simple belief:
+                    your vehicle deserves the same level of care and attention
+                    that went into building it. Every curve, every surface, every
+                    detail matters.
                   </p>
                   <p>
-                    Every business loses customers in the gaps — the message that
-                    comes in at midnight, the question nobody answered fast
-                    enough, the form that felt like too much work. Bootyfull
-                    lives in those gaps and turns them into sign-ups.
+                    We started in Scottsdale with one truck and a relentless
+                    commitment to quality. Today, we serve clients across the
+                    entire Valley — from Paradise Valley estates to corporate
+                    offices in Tempe — but our approach hasn&apos;t changed. Every
+                    vehicle gets the same meticulous, hands-on treatment.
                   </p>
                   <p>
-                    She greets, she qualifies, she books, she signs people up —
-                    in English, Spanish, or Portuguese — and drops every new
-                    customer straight into your system. No coffee breaks, no bad
-                    days, no leads left on read.
+                    In Arizona, your paint faces unique challenges: relentless UV
+                    exposure, dust storms, extreme heat cycles. We&apos;ve spent years
+                    perfecting techniques and selecting products specifically
+                    designed to protect against the desert environment.
                   </p>
                 </div>
               </div>
-              <div className="relative aspect-square border border-slate overflow-hidden">
-                <Image
-                  src="/customer-call.png"
-                  alt="A happy customer chatting from home, connected any time of day"
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                <span className="absolute bottom-4 left-4 text-[10px] uppercase tracking-[0.3em] text-off-white">
-                  Signed up from her couch
-                </span>
+              <div className="bg-gradient-to-br from-charcoal to-slate aspect-square flex items-center justify-center border border-slate">
+                <div className="text-center">
+                  <span className="font-display text-7xl text-gold/15 block">
+                    PHOTO
+                  </span>
+                  <span className="text-[10px] uppercase tracking-[0.3em] text-gray-600">
+                    Coming Soon
+                  </span>
+                </div>
               </div>
             </div>
           </ScrollReveal>
@@ -140,9 +138,9 @@ export default function AboutPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <ScrollReveal>
             <SectionHeading
-              label="What Drives Her"
-              title="BOOTYFULL VALUES"
-              goldWord="BOOTYFULL"
+              label="What Drives Us"
+              title="SUPERIOR VALUES"
+              goldWord="SUPERIOR"
             />
           </ScrollReveal>
 
@@ -171,9 +169,9 @@ export default function AboutPage() {
         <div className="max-w-3xl mx-auto px-6">
           <ScrollReveal>
             <SectionHeading
-              label="How She Grew"
-              title="THE BOOTYFULL STORY"
-              goldWord="BOOTYFULL"
+              label="Our Journey"
+              title="THE SUPERIOR TIMELINE"
+              goldWord="SUPERIOR"
             />
           </ScrollReveal>
 
@@ -208,24 +206,24 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Trust markers */}
+      {/* Certifications */}
       <section className="bg-charcoal py-16 border-t border-slate">
         <div className="max-w-5xl mx-auto px-6">
           <ScrollReveal>
             <SectionHeading
-              label="The Fine Print"
-              title="SAFE & SERIOUS (MOSTLY)"
-              description="Silly name, serious engineering. Bootyfull is built on infrastructure that treats your customers' data like it matters — because it does."
+              label="Credentials"
+              title="CERTIFIED & INSURED"
+              description="Fully insured with professional certifications from leading detailing product manufacturers."
             />
           </ScrollReveal>
 
           <div className="flex flex-wrap justify-center gap-6 mt-12">
             {[
-              "GDPR Ready",
-              "Data Encrypted",
-              "99.9% Uptime",
-              "No Lead Left Behind",
-              "Human Handoff",
+              "Gtechniq Accredited",
+              "Gyeon Certified",
+              "IDA Member",
+              "Fully Insured",
+              "Background Checked",
             ].map((cert, i) => (
               <ScrollReveal key={cert} delay={i * 80}>
                 <div className="border border-gold/20 px-6 py-4 text-center">
@@ -244,13 +242,13 @@ export default function AboutPage() {
         <div className="max-w-3xl mx-auto px-6 text-center">
           <ScrollReveal>
             <h2 className="font-display text-4xl md:text-5xl text-off-white mb-6">
-              LET HER SIGN UP YOUR <span className="text-gold">CUSTOMERS</span>
+              EXPERIENCE THE <span className="text-gold">DIFFERENCE</span>
             </h2>
             <Link
               href="/book"
               className="inline-block bg-gold text-black px-10 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors"
             >
-              Get Bootyfull
+              Book Your First Detail
             </Link>
           </ScrollReveal>
         </div>
