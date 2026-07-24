@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-/.pnp
 .pnp.*
 .yarn/*
 !.yarn/patches
@@ -11,14 +10,11 @@
 !.yarn/versions
 
 # testing
-/coverage
 
 # next.js
 /.next/
-/out/
 
 # production
-/build
 
 # misc
 .DS_Store
@@ -41,4 +37,4 @@ yarn-error.log*
 next-env.d.ts
 
 # local assets dump - never tracked
-/assets/
+/admin/
