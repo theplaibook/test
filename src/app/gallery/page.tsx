@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { BRAND, BRAND_UPPER } from "@/lib/brand";
 
 export const metadata: Metadata = {
   title: "Gallery",
-  description:
-    "Before and after photos of Superior Mobile Detailing's work. See the results of our premium car detailing, ceramic coating, and paint correction services in Scottsdale, AZ.",
+  description: `Before and after photos of ${BRAND.legalName}'s work. See the results of our premium ${BRAND.industry} services in ${BRAND.city}, ${BRAND.stateAbbr}.`,
 };
 
 const galleryItems = [
@@ -69,7 +69,7 @@ const galleryItems = [
   {
     category: "Ceramic Coating",
     vehicle: "2023 Porsche Cayenne Turbo GT",
-    description: "Paint correction + ceramic coating. Protected against Arizona sun with Gtechniq Crystal Serum Light.",
+    description: `Paint correction + ceramic coating. Protected against the ${BRAND.state} sun with Gtechniq Crystal Serum Light.`,
     image: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80",
     tag: "AFTER",
   },
@@ -116,12 +116,12 @@ export default function GalleryPage() {
             Our Work
           </p>
           <h1 className="font-display text-6xl md:text-8xl text-off-white animate-fade-in-up stagger-2">
-            <span className="text-gold">SUPERIOR</span> RESULTS
+            <span className="text-gold">{BRAND_UPPER}</span> RESULTS
           </h1>
           <div className="animate-expand mx-auto mt-6 h-[1px] max-w-xs bg-gradient-to-r from-transparent via-gold to-transparent" />
           <p className="text-gray-400 mt-6 max-w-xl mx-auto animate-fade-in-up stagger-3">
             Real results on real vehicles. Every transformation shown here was
-            performed by our team right here in the Scottsdale area.
+            performed by our team right here in the {BRAND.city} area.
           </p>
         </div>
       </section>
@@ -155,7 +155,7 @@ export default function GalleryPage() {
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image
                       src={item.image}
-                      alt={`${item.vehicle} - ${item.category} by Superior Mobile Detailing Scottsdale`}
+                      alt={`${item.vehicle} - ${item.category} by ${BRAND.legalName}`}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -218,7 +218,7 @@ export default function GalleryPage() {
               Your Vehicle Could Be Next
             </p>
             <h2 className="font-display text-4xl md:text-5xl text-off-white mb-6">
-              READY FOR <span className="text-gold">SUPERIOR</span> RESULTS?
+              READY FOR <span className="text-gold">{BRAND_UPPER}</span> RESULTS?
             </h2>
             <Link
               href="/book"

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { BRAND_UPPER } from "@/lib/brand";
 
 /* ── Service data ── */
 const services = [
@@ -178,7 +179,7 @@ export default function BookPage() {
             Schedule Your Detail
           </p>
           <h1 className="font-display text-6xl md:text-8xl text-off-white animate-fade-in-up stagger-2">
-            BOOK <span className="text-gold">SUPERIOR</span>
+            BOOK <span className="text-gold">{BRAND_UPPER}</span>
           </h1>
           <div className="animate-expand mx-auto mt-6 h-[1px] max-w-xs bg-gradient-to-r from-transparent via-gold to-transparent" />
         </div>
@@ -468,7 +469,7 @@ export default function BookPage() {
                           type="tel"
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
-                          placeholder="(480) 555-0000"
+                          placeholder="(555) 555-0000"
                         />
                       </div>
                     </div>

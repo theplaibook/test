@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionHeading } from "@/components/SectionHeading";
+import { BRAND, BRAND_UPPER } from "@/lib/brand";
 
 export const metadata: Metadata = {
   title: "Services & Pricing",
-  description:
-    "Premium car detailing services in Scottsdale, AZ. Exterior detail, interior detail, ceramic coating, paint correction, and fleet services. View packages and pricing.",
+  description: `Premium ${BRAND.industry} services in ${BRAND.city}, ${BRAND.stateAbbr}. View packages and pricing.`,
 };
 
 const packages = [
@@ -47,7 +47,7 @@ const packages = [
   {
     id: "full",
     name: "Full Detail",
-    tagline: "The complete Superior experience",
+    tagline: `The complete ${BRAND.name} experience`,
     price: 249,
     duration: "4-5 hours",
     popular: true,
@@ -99,7 +99,7 @@ const packages = [
   {
     id: "fleet",
     name: "Fleet Services",
-    tagline: "Volume pricing, Superior quality",
+    tagline: `Volume pricing, ${BRAND.name} quality`,
     price: null,
     duration: "Varies",
     features: [
@@ -137,12 +137,12 @@ export default function ServicesPage() {
             Our Services
           </p>
           <h1 className="font-display text-6xl md:text-8xl text-off-white animate-fade-in-up stagger-2">
-            <span className="text-gold">SUPERIOR</span> PACKAGES
+            <span className="text-gold">{BRAND_UPPER}</span> PACKAGES
           </h1>
           <div className="animate-expand mx-auto mt-6 h-[1px] max-w-xs bg-gradient-to-r from-transparent via-gold to-transparent" />
           <p className="text-gray-400 mt-6 max-w-xl mx-auto animate-fade-in-up stagger-3">
             Every package includes our mobile service — we come to you anywhere
-            in the Scottsdale and Phoenix area. Prices shown are for
+            in the {BRAND.city} area. Prices shown are for
             sedans; SUVs and trucks may vary.
           </p>
         </div>

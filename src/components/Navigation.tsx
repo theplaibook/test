@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { BRAND, BRAND_UPPER } from "@/lib/brand";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -34,10 +35,10 @@ export function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
             <span className="font-display text-3xl tracking-wider text-gold group-hover:text-gold-light transition-colors">
-              SUPERIOR
+              {BRAND_UPPER}
             </span>
-            <span className="hidden sm:block text-[10px] uppercase tracking-[0.3em] text-gray-400 leading-tight">
-              Mobile<br />Detailing
+            <span className="hidden sm:block text-[10px] uppercase tracking-[0.3em] text-gray-400 leading-tight max-w-[90px]">
+              {BRAND.descriptor}
             </span>
           </Link>
 

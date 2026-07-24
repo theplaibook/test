@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# template-premium
 
-## Getting Started
+Premium dark/gold marketing-site template for local service businesses.
+Next.js + Tailwind 4, Bebas Neue + Outfit, sharp edges (no border-radius),
+noise textures, gold shimmer, scroll reveals.
 
-First, run the development server:
+Pages: Home, Services & Pricing, Gallery, About, Book (step-by-step booking flow).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Rebranding — one file
+
+Everything brand-related lives in **`src/lib/brand.ts`**. Change the values
+there and the entire site follows: nav, footer, every heading's gold word,
+hero copy, contact links, service areas, hours, SEO metadata, and the
+LocalBusiness JSON-LD schema.
+
+Key fields:
+
+| Field | Drives |
+|---|---|
+| `name` | The big gold brand word in every heading, nav, and footer |
+| `descriptor` | The secondary line ("Mobile Detailing") in nav/hero/footer |
+| `legalName` | Copyright line, metadata, JSON-LD |
+| `heroEyebrow` / `heroSubtitle` | Homepage hero copy |
+| `city` / `state` / `metro` / `metroNickname` | All location references |
+| `serviceAreas` | Coverage chips on home + footer list |
+| `phone` / `phoneHref` / `email` / `url` | Every contact link |
+| `hours` | Footer hours + JSON-LD opening hours |
+| `rating` / `reviewCount` | Trust badge + JSON-LD aggregate rating |
+| `seoTitle` / `seoDescription` / `seoKeywords` | Metadata in layout.tsx |
+
+Industry-specific sample content (service packages, gallery items, reviews,
+timeline) lives in each page's local arrays — swap that content per project.
+
+## Run
+
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+npm install
+npm run dev
+```

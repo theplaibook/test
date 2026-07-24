@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionHeading } from "@/components/SectionHeading";
+import { BRAND, BRAND_UPPER } from "@/lib/brand";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description:
-    "Learn about Superior Mobile Detailing — Scottsdale's trusted mobile car detailing professionals. 8+ years of experience, 5,000+ vehicles detailed, 100% satisfaction guaranteed.",
+  description: `Learn about ${BRAND.legalName} — ${BRAND.city}'s trusted ${BRAND.industry} professionals.`,
 };
 
 const values = [
@@ -43,7 +43,7 @@ const timeline = [
     year: "2018",
     title: "Going Mobile",
     description:
-      "Invested in a fully equipped mobile rig to bring professional-grade detailing directly to clients across Scottsdale.",
+      `Invested in a fully equipped mobile rig to bring professional-grade detailing directly to clients across ${BRAND.city}.`,
   },
   {
     year: "2020",
@@ -55,7 +55,7 @@ const timeline = [
     year: "2022",
     title: "Fleet Contracts",
     description:
-      "Partnered with luxury dealerships and rental agencies across the Valley for recurring fleet maintenance.",
+      `Partnered with luxury dealerships and rental agencies across ${BRAND.metroNickname} for recurring fleet maintenance.`,
   },
   {
     year: "2024",
@@ -76,7 +76,7 @@ export default function AboutPage() {
             Our Story
           </p>
           <h1 className="font-display text-6xl md:text-8xl text-off-white animate-fade-in-up stagger-2">
-            BUILT ON <span className="text-gold">SUPERIOR</span> STANDARDS
+            BUILT ON <span className="text-gold">{BRAND_UPPER}</span> STANDARDS
           </h1>
           <div className="animate-expand mx-auto mt-6 h-[1px] max-w-xs bg-gradient-to-r from-transparent via-gold to-transparent" />
         </div>
@@ -97,23 +97,22 @@ export default function AboutPage() {
                 </h2>
                 <div className="space-y-4 text-sm text-gray-400 leading-relaxed">
                   <p>
-                    Superior Mobile Detailing was founded on a simple belief:
+                    {BRAND.legalName} was founded on a simple belief:
                     your vehicle deserves the same level of care and attention
                     that went into building it. Every curve, every surface, every
                     detail matters.
                   </p>
                   <p>
-                    We started in Scottsdale with one truck and a relentless
-                    commitment to quality. Today, we serve clients across the
-                    entire Valley — from Paradise Valley estates to corporate
-                    offices in Tempe — but our approach hasn&apos;t changed. Every
-                    vehicle gets the same meticulous, hands-on treatment.
+                    We started in {BRAND.city} with one truck and a relentless
+                    commitment to quality. Today, we serve clients across
+                    {" "}{BRAND.metroNickname} — but our approach hasn&apos;t changed.
+                    Every vehicle gets the same meticulous, hands-on treatment.
                   </p>
                   <p>
-                    In Arizona, your paint faces unique challenges: relentless UV
-                    exposure, dust storms, extreme heat cycles. We&apos;ve spent years
-                    perfecting techniques and selecting products specifically
-                    designed to protect against the desert environment.
+                    In {BRAND.state}, your paint faces unique challenges from
+                    the local climate. We&apos;ve spent years perfecting techniques
+                    and selecting products specifically designed to protect
+                    against it.
                   </p>
                 </div>
               </div>
@@ -139,8 +138,8 @@ export default function AboutPage() {
           <ScrollReveal>
             <SectionHeading
               label="What Drives Us"
-              title="SUPERIOR VALUES"
-              goldWord="SUPERIOR"
+              title={`${BRAND_UPPER} VALUES`}
+              goldWord={BRAND_UPPER}
             />
           </ScrollReveal>
 
@@ -170,8 +169,8 @@ export default function AboutPage() {
           <ScrollReveal>
             <SectionHeading
               label="Our Journey"
-              title="THE SUPERIOR TIMELINE"
-              goldWord="SUPERIOR"
+              title={`THE ${BRAND_UPPER} TIMELINE`}
+              goldWord={BRAND_UPPER}
             />
           </ScrollReveal>
 

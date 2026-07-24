@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionHeading } from "@/components/SectionHeading";
+import { BRAND, BRAND_UPPER, DESCRIPTOR_UPPER } from "@/lib/brand";
 
 const services = [
   {
@@ -20,14 +21,14 @@ const services = [
   {
     title: "Full Detail",
     description:
-      "Complete interior and exterior treatment. The full Superior experience, inside and out.",
+      `Complete interior and exterior treatment. The full ${BRAND.name} experience, inside and out.`,
     price: "From $249",
     icon: "03",
   },
   {
     title: "Ceramic Coating",
     description:
-      "Professional-grade ceramic protection. Years of defense against Arizona's brutal sun.",
+      `Professional-grade ceramic protection. Years of defense against ${BRAND.state}'s brutal sun.`,
     price: "From $599",
     icon: "04",
   },
@@ -64,7 +65,7 @@ const reviews = [
   {
     name: "Jennifer R.",
     vehicle: "2023 Mercedes GLE",
-    text: "They came to my office in Paradise Valley and detailed my car while I worked. Superior is the only detailer I trust with my Mercedes.",
+    text: `They came to my office in ${BRAND.serviceAreas[1]} and detailed my car while I worked. ${BRAND.name} is the only detailer I trust with my Mercedes.`,
     rating: 5,
   },
   {
@@ -92,9 +93,9 @@ const whyUs = [
       "Every technician is fully trained, background-checked, and insured. Your vehicle is in expert hands.",
   },
   {
-    title: "Arizona Specialists",
+    title: `${BRAND.state} Specialists`,
     description:
-      "We understand what the desert sun, dust, and heat do to paint and interiors. Our processes are built for this climate.",
+      "We understand what the local sun, dust, and weather do to paint and interiors. Our processes are built for this climate.",
   },
 ];
 
@@ -117,16 +118,16 @@ export default function HomePage() {
         <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
           {/* Eyebrow */}
           <p className="animate-fade-in-up stagger-1 text-xs uppercase tracking-[0.5em] text-gold/80 mb-8">
-            Scottsdale&apos;s Premier Mobile Detailing
+            {BRAND.heroEyebrow}
           </p>
 
           {/* Main title */}
           <h1 className="animate-fade-in-up stagger-2 font-display leading-[0.9]">
             <span className="block text-7xl sm:text-8xl md:text-[10rem] gold-shimmer">
-              SUPERIOR
+              {BRAND_UPPER}
             </span>
             <span className="block text-4xl sm:text-5xl md:text-7xl text-off-white mt-2">
-              MOBILE DETAILING
+              {DESCRIPTOR_UPPER}
             </span>
           </h1>
 
@@ -135,9 +136,7 @@ export default function HomePage() {
 
           {/* Subtitle */}
           <p className="animate-fade-in-up stagger-3 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Premium car detailing that comes to you. Ceramic coating, paint
-            correction, and meticulous detailing — delivered to your door
-            anywhere in the Scottsdale area.
+            {BRAND.heroSubtitle}
           </p>
 
           {/* CTAs */}
@@ -171,7 +170,7 @@ export default function HomePage() {
               ))}
             </div>
             <span className="text-sm text-gray-400">
-              5.0 from 156+ reviews
+              {BRAND.rating} from {BRAND.reviewCount}+ reviews
             </span>
           </div>
         </div>
@@ -204,8 +203,8 @@ export default function HomePage() {
           <ScrollReveal>
             <SectionHeading
               label="What We Do"
-              title="SUPERIOR SERVICES"
-              goldWord="SUPERIOR"
+              title={`${BRAND_UPPER} SERVICES`}
+              goldWord={BRAND_UPPER}
               description="From a quick exterior refresh to multi-stage paint correction, every service is performed with meticulous attention to detail."
             />
           </ScrollReveal>
@@ -242,7 +241,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== WHY SUPERIOR ===== */}
+      {/* ===== WHY US ===== */}
       <section className="relative bg-charcoal py-24 overflow-hidden noise-bg">
         <div className="gold-stripe left-[10%] top-[-30%]" />
         <div className="gold-stripe right-[20%] top-[-50%]" />
@@ -251,8 +250,8 @@ export default function HomePage() {
           <ScrollReveal>
             <SectionHeading
               label="The Difference"
-              title="WHY SUPERIOR?"
-              goldWord="SUPERIOR"
+              title={`WHY ${BRAND_UPPER}?`}
+              goldWord={BRAND_UPPER}
               description="We're not just another mobile wash. We're detailing professionals who happen to come to you."
             />
           </ScrollReveal>
@@ -287,8 +286,8 @@ export default function HomePage() {
           <ScrollReveal>
             <SectionHeading
               label="Testimonials"
-              title="SUPERIOR RESULTS"
-              goldWord="SUPERIOR"
+              title={`${BRAND_UPPER} RESULTS`}
+              goldWord={BRAND_UPPER}
               description="Don't take our word for it. Here's what our clients have to say."
             />
           </ScrollReveal>
@@ -332,24 +331,13 @@ export default function HomePage() {
           <ScrollReveal>
             <SectionHeading
               label="Coverage"
-              title="SERVING THE VALLEY"
-              description="We bring Superior detailing to your doorstep across the Phoenix metropolitan area."
+              title={`SERVING ${BRAND.metroNickname.toUpperCase()}`}
+              description={`We bring ${BRAND.name} quality to your doorstep across the ${BRAND.metro}.`}
             />
           </ScrollReveal>
 
           <div className="flex flex-wrap justify-center gap-4 mt-12">
-            {[
-              "Scottsdale",
-              "Paradise Valley",
-              "Phoenix",
-              "Tempe",
-              "Mesa",
-              "Chandler",
-              "Gilbert",
-              "Fountain Hills",
-              "Cave Creek",
-              "Carefree",
-            ].map((area, i) => (
+            {BRAND.serviceAreas.map((area, i) => (
               <ScrollReveal key={area} delay={i * 50}>
                 <div className="border border-slate px-6 py-3 text-sm uppercase tracking-wider text-gray-400 hover:border-gold hover:text-gold transition-colors cursor-default">
                   {area}
